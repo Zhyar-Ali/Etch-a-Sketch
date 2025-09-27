@@ -33,8 +33,8 @@ function createDiv(){
         for (let j=1;j<=col;j++){
             var square = document.createElement("div");
             square.classList.add("squares");
-            square.style.width = `${790/row}px`;
-            square.style.height = `${790/col}px`;
+            square.style.width = `${800/row}px`;
+            square.style.height = `${800/col}px`;
             CONTAINER.append(square);
         }
     }
@@ -49,7 +49,7 @@ function colorSquares(){
     const listSquare = document.querySelectorAll(".squares");
 
     listSquare.forEach(element => {
-        element.addEventListener('mouseover', () => element.style.backgroundColor="red");
+        element.addEventListener('mouseover', () => element.style.backgroundColor="blue");
     })
 }
 
