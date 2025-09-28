@@ -47,23 +47,6 @@ function deleteDiv(){
     listSquare.forEach(element => CONTAINER.removeChild(element));
 }
 
-
-// function colorSquares(){
-//     const listSquare = document.querySelectorAll(".squares");
-    
-//     listSquare.forEach(element => {  
-//         rgbButton.addEventListener('click', () => {
-//             element.addEventListener('mouseover', () => element.style.backgroundColor=randomColor());
-//         })
-
-//         inpt.addEventListener('click', () => {
-//             element.addEventListener('mouseover', () => {
-//                 element.style.backgroundColor=inpt.value;
-//             });
-//         })
-//     })
-// }
-
 function colorSquares() {
     const listSquare = document.querySelectorAll(".squares");
 
