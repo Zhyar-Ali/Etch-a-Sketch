@@ -50,27 +50,6 @@ function deleteDiv(){
 function colorSquares() {
     const listSquare = document.querySelectorAll(".squares");
 
-    function rgbColor() {
-        this.style.backgroundColor = randomColor();;
-    }
-
-    function colorPicker(){
-        let opacity = parseFloat(this.dataset.opacity) || 0.1;
-        if (opacity<1){
-            opacity = Math.min(opacity+0.1, 1);
-            this.dataset.opacity = opacity.toFixed(2);
-        }
-
-        const desiredColor = inpt.value;
-
-        const r = parseInt(desiredColor.substring(1,3),16);
-        const g = parseInt(desiredColor.substring(3,5),16);
-        const b = parseInt(desiredColor.substring(5,7),16);
-
-        const rgbaColor = `rgba(${r}, ${g}, ${b}, ${opacity})`;
-        this.style.backgroundColor = rgbaColor;
-    }
-
     rgbButton.addEventListener("click",()=>{
         listSquare.forEach(square => {
             square.dataset.mode = "rgb";
@@ -95,4 +74,25 @@ function randomColor(){
     let g = Math.floor(Math.random()*256);
     let b = Math.floor(Math.random()*256);
     return `rgb(${r}, ${g}, ${b})`;
+}
+
+function colorPicker(){
+    let opacity = parseFloat(this.dataset.opacity) || 0.1;
+    if (opacity<1){
+        opacity = Math.min(opacity+0.1, 1);
+        this.dataset.opacity = opacity.toFixed(2);
+    }
+
+    const desiredColor = inpt.value;
+
+    const r = parseInt(desiredColor.substring(1,3),16);
+    const g = parseInt(desiredColor.substring(3,5),16);
+    const b = parseInt(desiredColor.substring(5,7),16);
+
+    const rgbaColor = `rgba(${r}, ${g}, ${b}, ${opacity})`;
+    this.style.backgroundColor = rgbaColor;
+}
+
+function rgbColor() {
+    this.style.backgroundColor = randomColor();;
 }
