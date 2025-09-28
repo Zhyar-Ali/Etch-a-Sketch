@@ -3,6 +3,8 @@ let col;
 const CONTAINER = document.querySelector(".container");
 const button = document.querySelector("#gridLayout");
 button.addEventListener("click", gridLayout);
+const rgbButton = document.querySelector("#rgb");
+let inpt = document.querySelector("#favcolor");
 
 
 function gridLayout(){
@@ -48,9 +50,13 @@ function deleteDiv(){
 function colorSquares(){
     const listSquare = document.querySelectorAll(".squares");
     
-
-    listSquare.forEach(element => {
-        element.addEventListener('mouseover', () => element.style.backgroundColor=randomColor());
+    listSquare.forEach(element => {  
+        rgbButton.addEventListener('click', () => {
+            element.addEventListener('mouseover', () => element.style.backgroundColor=randomColor());
+        })
+        inpt.addEventListener('click', () => {
+            element.addEventListener('mouseover', () => element.style.backgroundColor=inpt.value);
+        })
     })
 }
 
