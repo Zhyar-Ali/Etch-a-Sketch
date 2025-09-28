@@ -55,3 +55,8 @@ input{
     width: 100px;
     height: 30px;
 }
+button:hover, .labelInput:hover{
+    cursor: pointer;
+    border: 2px solid rgb(87, 136, 250);
+    color:  rgb(0, 38, 255);
+}
