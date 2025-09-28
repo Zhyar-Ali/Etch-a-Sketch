@@ -47,18 +47,65 @@ function deleteDiv(){
     listSquare.forEach(element => CONTAINER.removeChild(element));
 }
 
-function colorSquares(){
-    const listSquare = document.querySelectorAll(".squares");
+
+// function colorSquares(){
+//     const listSquare = document.querySelectorAll(".squares");
     
-    listSquare.forEach(element => {  
-        rgbButton.addEventListener('click', () => {
-            element.addEventListener('mouseover', () => element.style.backgroundColor=randomColor());
+//     listSquare.forEach(element => {  
+//         rgbButton.addEventListener('click', () => {
+//             element.addEventListener('mouseover', () => element.style.backgroundColor=randomColor());
+//         })
+
+//         inpt.addEventListener('click', () => {
+//             element.addEventListener('mouseover', () => {
+//                 element.style.backgroundColor=inpt.value;
+//             });
+//         })
+//     })
+// }
+
+function colorSquares() {
+    const listSquare = document.querySelectorAll(".squares");
+
+    function rgbColor() {
+        this.style.backgroundColor = randomColor();;
+    }
+
+    function colorPicker(){
+        let opacity = parseFloat(this.dataset.opacity) || 0.1;
+        if (opacity<1){
+            opacity = Math.min(opacity+0.1, 1);
+            this.dataset.opacity = opacity.toFixed(2);
+        }
+
+        const desiredColor = inpt.value;
+
+        const r = parseInt(desiredColor.substring(1,3),16);
+        const g = parseInt(desiredColor.substring(3,5),16);
+        const b = parseInt(desiredColor.substring(5,7),16);
+
+        const rgbaColor = `rgba(${r}, ${g}, ${b}, ${opacity})`;
+        this.style.backgroundColor = rgbaColor;
+    }
+
+    rgbButton.addEventListener("click",()=>{
+        listSquare.forEach(square => {
+            square.dataset.mode = "rgb";
+            square.removeEventListener("mouseenter",colorPicker);
+            square.addEventListener("mouseenter", rgbColor);
         })
-        inpt.addEventListener('click', () => {
-            element.addEventListener('mouseover', () => element.style.backgroundColor=inpt.value);
+    })
+
+    inpt.addEventListener("input", () =>{
+        listSquare.forEach(square => {
+            square.dataset.mode = "custom";
+            square.dataset.opacity = "0.1";
+            square.removeEventListener("mouseenter", rgbColor);
+            square.addEventListener("mouseenter", colorPicker);
         })
     })
 }
+
 
 function randomColor(){
     let r = Math.floor(Math.random()*256);
