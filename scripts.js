@@ -47,9 +47,16 @@ function deleteDiv(){
 
 function colorSquares(){
     const listSquare = document.querySelectorAll(".squares");
+    
 
     listSquare.forEach(element => {
-        element.addEventListener('mouseover', () => element.style.backgroundColor="blue");
+        element.addEventListener('mouseover', () => element.style.backgroundColor=randomColor());
     })
 }
 
+function randomColor(){
+    let r = Math.floor(Math.random()*256);
+    let g = Math.floor(Math.random()*256);
+    let b = Math.floor(Math.random()*256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
